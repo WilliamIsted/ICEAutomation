@@ -238,11 +238,14 @@ namespace ImageComposeEditorAutomation
             try
             {                
                 // Number of columns - 3x3
-                var numOfRowsOrColumns = options.Rows.HasValue ? options.Rows.Value : options.Columns.Value;
+                /* var numOfRowsOrColumns = options.Rows.HasValue ? options.Rows.Value : options.Columns.Value;
                 var b3 = options.Rows.HasValue 
                     ? window.FindFirstDescendant(cf => cf.ByAutomationId("rowCountTextBox"))
                     : window.FindFirstDescendant(cf => cf.ByAutomationId("primaryDirectionImageCountTextBox"));
-                b3.AsTextBox().Enter(numOfRowsOrColumns.ToString());
+                b3.AsTextBox().Enter(numOfRowsOrColumns.ToString()); */
+
+                var b3 = window.FindFirstDescendant(cf => cf.ByAutomationId("primaryDirectionImageCountTextBox"));
+                b3.AsTextBox().Enter("12");
 
                 //Serpentine
                 var radiobutton = window.FindFirstDescendant(cf => cf.ByAutomationId("serpentineRadioButton")).AsRadioButton();
@@ -286,7 +289,8 @@ namespace ImageComposeEditorAutomation
 
         int GetPosition2(Corner corner, int? rows)
         {
-            if (corner == Corner.topLeft)
+            return 13;
+            /* if (corner == Corner.topLeft)
                 return rows.HasValue 
                     ? 11  //Start moving down
                     : 9;  //Start moving right
@@ -300,7 +304,7 @@ namespace ImageComposeEditorAutomation
                     : 15;  //Start moving right
             return rows.HasValue 
                     ? 14  //Start moving up
-                    : 16; //Start moving left
+                    : 16; //Start moving left */
         }
 
         public static T GetAttribute<T>(Enum enumeration) where T : Attribute
